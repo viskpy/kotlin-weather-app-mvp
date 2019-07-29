@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="default_city">Bengaluru</string>
+    <string name="retry">Retry</string>
+    <string name="invalid_city">Invalid City</string>
+</resources>

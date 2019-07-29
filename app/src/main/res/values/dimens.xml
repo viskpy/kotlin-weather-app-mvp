@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="forecast_radius">3dp</dimen>
+    <dimen name="forecast_elevation">5dp</dimen>
+    <dimen name="forecast_main_view_padding">10dp</dimen>
+    <dimen name="forecast_condition_padding">20dp</dimen>
+    <dimen name="forecast_icon_height_width">30dp</dimen>
+    <dimen name="forecast_condition_left_margin">5dp</dimen>
+    <dimen name="loader_width_height">50dp</dimen>
+    <dimen name="weather_card_margin">10dp</dimen>
+    <dimen name="weather_card_radius">5dp</dimen>
+    <dimen name="weather_card_elevation">5dp</dimen>
+    <dimen name="city_padding">5dp</dimen>
+    <dimen name="temp_text_size">65sp</dimen>
+    <dimen name="city_text_size">30sp</dimen>
+    <dimen name="retry_text_size">40sp</dimen>
+</resources>
