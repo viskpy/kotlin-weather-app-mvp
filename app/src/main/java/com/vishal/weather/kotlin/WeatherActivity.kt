@@ -2,12 +2,32 @@ package com.vishal.weather.kotlin
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.MotionEvent
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import android.widget.*
+import com.vishal.weather.kotlin.pojo.ForecastDataModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.util.*
 
+/**
+ * This activity will be the first activity to be shown to user. Initially a leader view
+ * {@link WeatherActivity#loaderMainViewRL} will be shown to user unless weather data is fetched.
+ * For now Bangalore is added the default city to be shown and with the help of view
+ * {@link WeatherActivity#searchCityET} user can search city for checking the weather and forecast.
+ * ================================================================================================
+ * This class follows MVP design pattern, where Model, View and Presenter's contract is commonly
+ * defined in {@link WeatherContract} class. And implementations are defined in
+ * {@link WeatherModelImpl} and {@link WeatherPresenterImpl} classes.
+ *
+ * @author Vishal - 31st August 2019
+ * @since 1.0.0
+ */
 class WeatherActivity : AppCompatActivity(), WeatherContract.View {
 
     lateinit var loaderMainViewRL: RelativeLayout
@@ -34,6 +54,10 @@ class WeatherActivity : AppCompatActivity(), WeatherContract.View {
         presenter.getWeatherData(getTextToBeSearched())
     }
 
+    /**
+     * Callback give from {@link WeatherPresenterImpl} for initializing the views and there
+     * listeners if they have any.
+     */
     override fun onInitView() {
         loaderMainViewRL = findViewById(R.id.loader_main_view)
         loaderIV = findViewById(R.id.loader)
@@ -60,24 +84,85 @@ class WeatherActivity : AppCompatActivity(), WeatherContract.View {
         }
     }
 
+    /**
+     * Handles the visibility of loader view.
+     *
+     * @param show show the view if true else hide it.
+     */
+    override fun handleLoaderView(showHandleLoader: Boolean) {
+        if (showHandleLoader) {
+            val rotation = AnimationUtils.loadAnimation(activity, R.anim.rotate)
+            rotation.repeatCount = Animation.INFINITE
+            rotation.repeatMode = Animation.RESTART
+            loaderIV.startAnimation(rotation)
+            loaderMainViewRL.visibility = View.VISIBLE
+        } else {
+            loaderMainViewRL.visibility = View.GONE
+        }
+    }
+
+    /**
+     * Handles the visibility of weather view.
+     *
+     * @param show show the view if true else hide it.
+     */
+    override fun handleWeatherView(showWeatherView: Boolean) {
+        weatherForecastViewLL.visibility = if (showWeatherView) View.VISIBLE else View.GONE
+    }
+
+    /**
+     * Handles the visibility of error view.
+     *
+     * @param show show the view if true else hide it.
+     */
+    override fun handleErrorView(showErrorView: Boolean) {
+        errorViewRL.visibility = if (showErrorView) View.VISIBLE else View.GONE
+    }
+
+    /**
+     * A common method for showing any message in Toast format.
+     *
+     * @param message to be shown
+     */
+    override fun showErrorMessage(invalidCityMessage: String?) {
+        Toast.makeText(activity, invalidCityMessage, Toast.LENGTH_SHORT).show()
+    }
+
+    /**
+     * Sets the city name and temperature of that city.
+     *
+     * @param cityName    name of the city.
+     * @param temperature of the city.
+     */
+    override fun setCityCurrentTemperature(cityName: String?, temperature: String?) {
+        cityNameTV.text = cityName
+        temperatureTV.text = temperature
+    }
+
+    /**
+     * Displays the forecast information based on searched city. It also applies a slide up
+     * animation for all forecast rows.
+     *
+     * @param forecastData
+     */
+    override fun showForeCastData(forecastData: ArrayList<ForecastDataModel>) {
+        forecastRV.layoutManager = LinearLayoutManager(activity)
+        forecastRV.adapter = ForecastAdapter(forecastData)
+        val controller: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(activity, R.anim.aslide_up_anim)
+        forecastRV.layoutAnimation = controller
+        (forecastRV.adapter as ForecastAdapter).notifyDataSetChanged()
+        forecastRV.scheduleLayoutAnimation()
+    }
+
+    /**
+     * @return text value of {@link WeatherActivity#searchCityET}
+     */
     private fun getTextToBeSearched(): String {
         return searchCityET.text.toString()
     }
 
-    override fun showErrorMessage(invalidCityMessage: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun finish() {
+        super.finish()
+        presenter.destroyView()
     }
-
-    override fun handleLoaderView(showHandleLoader: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun handleWeatherView(showWeatherView: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun handleErrorView(showErrorView: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
 }
