@@ -10,7 +10,7 @@ import java.util.*
  * Contract class for {@link WeatherActivity} that holds all the required method used by the View,
  * Model and Presenter.
  *
- * @author Vishal - 31st August 2019
+ * @author Vishal - 31st July 2019
  * @since 1.0.0
  */
 interface WeatherContract {
@@ -28,7 +28,7 @@ interface WeatherContract {
         fun init()
         fun getWeatherData(textToBeSearched: String)
         fun destroyView()
-        fun handleTemperatureResponse(temperatureResponse: TemperatureResponse)
+        fun handleTemperatureResponse(temperatureResponse: TemperatureResponse?)
     }
 
     interface Model {

@@ -17,7 +17,7 @@ import java.util.*
  * Presenter implementation for {@link WeatherActivity} that holds the view's command and fetches
  * data from {@link WeatherModelImpl}, then updates the View UI.
  *
- * @author Vishal - 31st August 2019
+ * @author Vishal - 31st July 2019
  * @since 1.0.0
  */
 class WeatherPresenterImpl(
@@ -90,7 +90,7 @@ class WeatherPresenterImpl(
      *
      * @param temperatureResponse
      */
-    override fun handleTemperatureResponse(temperatureResponse: TemperatureResponse) {
+    override fun handleTemperatureResponse(temperatureResponse: TemperatureResponse?) {
         if (null != temperatureResponse) {
             val error = temperatureResponse.error
             if (null != error) {

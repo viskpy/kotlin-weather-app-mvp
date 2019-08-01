@@ -21,7 +21,7 @@ import java.util.*
  * Here we can define get the data from different sources like, SharedPref, LocalDB, Network call
  * and so on.
  *
- * @author Vishal - 31st August 2019
+ * @author Vishal - 31st July 2019
  * @since 1.0.0
  */
 class WeatherModelImpl(context: Context) : WeatherContract.Model {

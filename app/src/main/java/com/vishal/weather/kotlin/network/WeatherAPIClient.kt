@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
  * defined here. And common header can be defined as a interceptor in
  * {@link WeatherAPIClient#getClient()}
  *
- * @author Vishal - 31st August 2019
+ * @author Vishal - 31st July 2019
  * @since 1.0.0
  */
 object WeatherAPIClient {

@@ -9,7 +9,7 @@ import retrofit2.http.Query
 /**
  * This interface is responsible for holding all APIs need to be invoked by the application.
  *
- * @author Vishal - 31st August 2019
+ * @author Vishal - 31st July 2019
  * @since 1.0.0
  */
 interface WeatherRestService {

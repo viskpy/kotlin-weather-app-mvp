@@ -25,7 +25,7 @@ import java.util.*
  * defined in {@link WeatherContract} class. And implementations are defined in
  * {@link WeatherModelImpl} and {@link WeatherPresenterImpl} classes.
  *
- * @author Vishal - 31st August 2019
+ * @author Vishal - 31st July 2019
  * @since 1.0.0
  */
 class WeatherActivity : AppCompatActivity(), WeatherContract.View {

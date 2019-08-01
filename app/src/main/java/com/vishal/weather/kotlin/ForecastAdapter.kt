@@ -12,7 +12,7 @@ import com.vishal.weather.kotlin.pojo.ForecastDataModel
  * Adapter class for showing list of forecast of a give city. This class expect a constructor data
  * in the form of {@link List<ForecastDataModel>} which holds all forecast data.
  *
- * @author Vishal - 31st August 2019
+ * @author Vishal - 31st July 2019
  * @since 1.0.0
  */
 class ForecastAdapter constructor(forecastData: List<ForecastDataModel>) : RecyclerView.Adapter<ForecastAdapter

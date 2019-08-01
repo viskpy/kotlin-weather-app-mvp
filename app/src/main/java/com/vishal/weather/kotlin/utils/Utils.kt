@@ -7,7 +7,7 @@ import kotlin.math.roundToLong
  * This file is a utility class that can be access from anywhere in the application.It contains the
  * commonly used utility methods.
  *
- * @author Vishal - 31st August 2019
+ * @author Vishal - 31st July 2019
  * @since 1.0.0
  */
 val DEFAULT_CONNECT_TIMEOUT_IN_MS: Long = 90000
@@ -27,5 +27,5 @@ val FORECAST_VIEW_DATE_FORMAT = "dd MMM yyyy"
  * @return formatted text with degree
  */
 fun addDegreeSymbol(temp: Double?): String? {
-    return if (null == temp) "- + $DEGREE_CHAR" else temp.roundToLong().toString() + DEGREE_CHAR
+    return if (null == temp) "-$DEGREE_CHAR" else temp.roundToLong().toString() + DEGREE_CHAR
 }
