@@ -161,6 +161,9 @@ class WeatherActivity : AppCompatActivity(), WeatherContract.View {
         return searchCityET.text.toString()
     }
 
+    /**
+     * Callback method before activity destroys
+     */
     override fun finish() {
         super.finish()
         presenter.destroyView()
