@@ -58,7 +58,7 @@ class WeatherModelImpl(context: Context) : WeatherContract.Model {
             1003 -> icon = R.mipmap.clear
             1006 -> icon = R.mipmap.clouds
             1180, 1183, 1186, 1189, 1192, 1195, 1198, 1201 -> icon = R.mipmap.rain
-            1117 -> icon = R.mipmap.storm
+            1117 -> icon = R.mipmap.weather
         }
         return ContextCompat.getDrawable(context, icon)
     }
