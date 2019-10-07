@@ -1,5 +1,5 @@
 # Weather App (Android) 
-This repository is Kotlin replication of [this](https://github.com/viskp/weather-app-mvp).
+This repository is Kotlin replication of [this](https://github.com/viskpy/weather-app-mvp).
 
 This app shows the current weather and forecast of next 7days. There is a edit box where user can
 find the desired city for weather updates
